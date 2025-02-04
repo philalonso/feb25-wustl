@@ -1,0 +1,19 @@
+uuid: e04335fc-4c99-4e51-ae9b-76d94cd1f9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hash
+    - node.type.repository
+id: node.repository.field_hash
+field_name: field_hash
+entity_type: node
+bundle: repository
+label: Hash
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

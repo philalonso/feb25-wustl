@@ -1,0 +1,5 @@
+name: 'Repo Nodes'
+type: module
+description: 'Create repository nodes from remote Git repository metadata.'
+package: WUSTL
+core_version_requirement: ^10 || ^11

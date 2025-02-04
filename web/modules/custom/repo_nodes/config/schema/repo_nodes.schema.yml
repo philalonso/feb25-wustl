@@ -1,0 +1,14 @@
+# Schema for the configuration files of the Repo Nodes module.
+repo_nodes.settings:
+  type: config_object
+  label: 'Repo Nodes settings'
+  mapping:
+    repo_plugins:
+      type: sequence
+      label: 'Repo plugins'
+      sequence:
+        type: string
+        constraints:
+          NotNull: {}
+  constraints:
+    FullyValidatable: ~

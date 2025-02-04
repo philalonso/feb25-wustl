@@ -1,0 +1,3 @@
+configure repo nodes:
+  title: 'Configure Repo Nodes'
+  description: 'Allows access to the Repo Nodes settings.'

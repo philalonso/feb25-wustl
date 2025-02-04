@@ -1,0 +1,6 @@
+repo_nodes.settings:
+  title: Repo Nodes settings
+  description: Repo Nodes repository settings
+  parent: system.admin_config_services
+  route_name: repo_nodes.settings
+  weight: 10
