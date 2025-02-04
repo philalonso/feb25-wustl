@@ -1,0 +1,9 @@
+vendor
+web/modules/contrib
+web/themes/contrib
+web/libraries
+web/profiles/contrib
+web/core
+*.sql.gz
+tmp/
+keys/
