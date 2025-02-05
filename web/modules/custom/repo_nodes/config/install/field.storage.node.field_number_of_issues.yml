@@ -1,0 +1,20 @@
+uuid: 4ca5987b-21e0-49d9-aab9-dc181abf2d3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_number_of_issues
+field_name: field_number_of_issues
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

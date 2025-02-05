@@ -30,10 +30,17 @@ final class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
+    // Get the current config.
+    $repos_config = $this->config('repo_nodes.settings')
+    ->get('repo_plugins') ?? [];
     $form['repo_plugins'] = [
       '#type' => 'checkboxes',
-      '#options' => ['yml_remote' => 'Yml remote'],
-      '#title' => $this->t('Repo plugins'),
+      '#title' => $this->t('Repository plugins'),
+      '#options' => [
+        'yml_remote' => $this->t('Yml remote'),
+        'github' => $this->t('GitHub'),
+      ],
+      '#default_value' => $repos_config,
     ];
     return parent::buildForm($form, $form_state);
   }
@@ -60,7 +67,7 @@ final class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('repo_nodes.settings')
-      ->set('example', $form_state->getValue('example'))
+      ->set('repo_plugins', $form_state->getValue('repo_plugins'))
       ->save();
     parent::submitForm($form, $form_state);
   }

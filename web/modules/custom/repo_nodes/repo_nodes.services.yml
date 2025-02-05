@@ -1,0 +1,4 @@
+services:
+  plugin.manager.repo_nodes:
+    class: Drupal\repo_nodes\RepoNodes\RepoNodesPluginManager
+    parent: default_plugin_manager

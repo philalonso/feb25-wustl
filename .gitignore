@@ -7,3 +7,4 @@ web/core
 *.sql.gz
 tmp/
 keys/
+*.DS_Store
