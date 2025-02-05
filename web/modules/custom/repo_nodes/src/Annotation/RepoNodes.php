@@ -16,20 +16,27 @@ final class RepoNodes extends Plugin {
   /**
    * The plugin ID.
    */
-  public readonly string $id;
+  public string $id;
 
   /**
    * The human-readable name of the plugin.
    *
    * @ingroup plugin_translatable
    */
-  public readonly string $title;
+  public string $label;
 
   /**
    * The description of the plugin.
    *
    * @ingroup plugin_translatable
    */
-  public readonly string $description;
+  public string $description;
+
+  /**
+   * The help text for repository URLs
+   *
+   * @ingroup plugin_translatable
+   */
+  public readonly string $url_help_text;
 
 }
