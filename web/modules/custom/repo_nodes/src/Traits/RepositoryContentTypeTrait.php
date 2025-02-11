@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Drupal\Tests\repo_nodes\Traits;
+namespace Drupal\repo_nodes\Traits;
 
 use Drupal\field\Entity\FieldConfig;
 use Drupal\field\Entity\FieldStorageConfig;
@@ -14,7 +14,38 @@ use Drupal\node\Entity\NodeType;
 trait RepositoryContentTypeTrait {
 
   /**
+   * Create field config for Repository URL field on user entity.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
+   */
+  protected function createUserRepositoryUrlField(): void {
+    // Add the Repository URL field to the user entity.
+    FieldStorageConfig::create([
+      'field_name' => 'field_repository_url',
+      'type' => 'link',
+      'entity_type' => 'user',
+      'cardinality' => -1,
+    ])->save();
+    FieldConfig::create([
+      'field_name' => 'field_repository_url',
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => 'Repository URL',
+    ])->save();
+
+    // Ensure that the Repository URL field is visible in the existing user
+    // entity form mode.
+    /** @var \Drupal\Core\Entity\EntityDisplayRepository $entity_display_repository */
+    $entity_display_repository = \Drupal::service('entity_display.repository');
+    $entity_display_repository->getFormDisplay('user', 'user', 'default')
+      ->setComponent('field_repository_url', ['type' => 'link_default'])
+      ->save();
+  }
+
+  /**
    * Creates a repository content type with fields.
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   protected function createRepositoryContentType(): void {
     NodeType::create(['type' => 'repository', 'name' => 'Repository'])->save();
@@ -102,6 +133,7 @@ trait RepositoryContentTypeTrait {
       'bundle' => 'repository',
       'label' => 'URL',
     ])->save();
+
   }
 
 }

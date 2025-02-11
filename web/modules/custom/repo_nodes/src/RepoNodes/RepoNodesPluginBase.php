@@ -20,23 +20,10 @@ abstract class RepoNodesPluginBase extends PluginBase implements RepoNodesInterf
   }
 
   /**
-   * Default implementation to validate repository URLs.
-   *
-   * @param string $uri
-   *   The URI to validate.
-   *
-   * @return bool
-   *   Returns FALSE is not valid.
+   * {@inheritDoc}
    */
   public function validate(string $uri): bool {
     return FALSE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateHelpText() : string {
-    return $this->getPluginDefinition()['url_help_text']->__toString();
   }
 
   /**
@@ -66,6 +53,5 @@ abstract class RepoNodesPluginBase extends PluginBase implements RepoNodesInterf
     ];
     return $repo_info;
   }
-
 
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Drupal\Tests\repo_nodes\Functional;
 
 use Drupal\Tests\BrowserTestBase;
-use Drupal\Tests\repo_nodes\Traits\RepositoryContentTypeTrait;
+use Drupal\repo_nodes\Traits\RepositoryContentTypeTrait;
 use Drupal\user\UserInterface;
 
 /**

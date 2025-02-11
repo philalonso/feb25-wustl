@@ -37,9 +37,9 @@ final class YmlRemote extends RepoNodesPluginBase {
    * {@inheritdoc}
    */
   public function getRepo(string $uri): array {
-    if ($file_contents = file_get_contents($uri)) {
+    if ($repo_info = file_get_contents($uri)) {
       // Convert file contents from Yaml to a PHP array.
-      $repo_info = Yaml::decode($file_contents);
+      $repo_info = Yaml::decode($repo_info);
       $machine_name = array_key_first($repo_info);
       $repo = reset($repo_info);
       return $this->mapToCommonFormat($machine_name, $repo['label'], $repo['description'], $repo['num_open_issues'], $uri);

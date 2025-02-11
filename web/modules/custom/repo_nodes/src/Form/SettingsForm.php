@@ -58,7 +58,7 @@ final class SettingsForm extends ConfigFormBase {
     //       $this->t('The value is not correct.'),
     //     );
     //   }
-    // @endcode
+    // @end code
     parent::validateForm($form, $form_state);
   }
 

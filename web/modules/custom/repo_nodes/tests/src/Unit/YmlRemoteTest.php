@@ -30,7 +30,7 @@ final class YmlRemoteTest extends UnitTestCase {
   }
 
   /**
-   * Test that the help text retuns as expected.
+   * Test that the help text returns as expected.
    *
    * @covers YmlRemote::validateHelpText
    * @test
@@ -93,9 +93,38 @@ final class YmlRemoteTest extends UnitTestCase {
   /**
    * Test that the URL validator works.
    *
+   * @param string $test_string
+   *   The string to test.
+   * @param bool $expected
+   *   The expected result.
+   *
+   * @dataProvider validateProvider
    * @covers YmlRemote::validate
    * @test
    */
+  public function testValidate(string $test_string, bool $expected): void {
+    self::assertEquals($expected, $this->ymlRemote->validate($test_string),
+    "Validation of '$test_string' does not return '$expected'.");
+  }
+
+  /**
+   * Test that a repo can be read properly.
+   *
+   * @covers ::getRepo
+   * @test
+   */
+  public function testGetRepo(): void {
+    $file_path = __DIR__ . '/../../assets/english-dept-repo.yml';
+    $repo = $this->ymlRemote->getRepo($file_path);
+    $machine_name = array_key_first($repo);
+    self::assertEquals('english-dept-repo', $machine_name, "The expected machine name does not match what was provided: '$machine_name'.");
+    $repo = reset($repo);
+    self::assertEquals('The English Department Repository', $repo['label'], "The expected label does not match what was provided: '{$repo['label']}'.");
+    self::assertEquals('This is the repository for the English Department.', $repo['description'], "The expected description does not match what was provided: '{$repo['description']}'.'");
+    // self::assertEquals('yml_remote', $repo['source'], "The expected source does not match what was provided: '{$repo['source']}'.");
+    self::assertEquals('6', $repo['num_open_issues'], "The expected number of open issues does not match what was provided: '{$repo['num_open_issues']}'.");
+    self::assertEquals($file_path, $repo['url'], "The expected URL does not match what was provided: '{$repo['url']}'.");
+  }
 
 
 
