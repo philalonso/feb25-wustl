@@ -5,3 +5,4 @@ services:
 
   repo_nodes.service:
     class: Drupal\repo_nodes\RepoNodesService
+    arguments: ['@plugin.manager.repo_nodes', '@config.factory']
