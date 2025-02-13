@@ -18,28 +18,36 @@ bundle: user
 mode: default
 content:
   account:
-    weight: -10
+    weight: 1
     region: content
+    settings: {  }
+    third_party_settings: {  }
   contact:
-    weight: 5
+    weight: 4
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_repository_url:
     type: link_default
-    weight: 7
+    weight: 0
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
   language:
-    weight: 0
+    weight: 3
     region: content
+    settings: {  }
+    third_party_settings: {  }
   timezone:
-    weight: 6
+    weight: 5
     region: content
+    settings: {  }
+    third_party_settings: {  }
   user_picture:
     type: image_image
-    weight: -1
+    weight: 2
     region: content
     settings:
       progress_indicator: throbber

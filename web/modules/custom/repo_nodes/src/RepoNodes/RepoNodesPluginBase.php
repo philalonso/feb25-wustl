@@ -20,6 +20,13 @@ abstract class RepoNodesPluginBase extends PluginBase implements RepoNodesInterf
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function validateHelpText(): string {
+    return $this->getPluginDefinition()['url_help_text']->__toString();
+  }
+
+  /**
    * {@inheritDoc}
    */
   public function validate(string $uri): bool {

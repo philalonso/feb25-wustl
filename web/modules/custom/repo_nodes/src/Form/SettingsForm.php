@@ -42,6 +42,7 @@ final class SettingsForm extends ConfigFormBase {
       ],
       '#default_value' => $repos_config,
     ];
+    $form['#config-target'] = 'repo_nodes.settings:repo_plugins';
     return parent::buildForm($form, $form_state);
   }
 

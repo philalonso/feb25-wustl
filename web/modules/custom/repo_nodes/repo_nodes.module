@@ -22,17 +22,18 @@ function repo_nodes_form_user_form_alter(array &$form, FormStateInterface $formS
 /**
  * Custom function to populate the Repository URL descriptions.
  *
- * @param array<mixed> $element
+ * @param array $element
  *   The element to modify.
  * @param Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
- * @param array<mixed> $form
+ * @param array $form
  *   The form array.
  *
- * @return array<mixed>
+ * @return array
  *   A render element.
+ * @throws \Drupal\Component\Plugin\Exception\PluginException
  */
-function repo_nodes_url_help_text(array $element, FormStateInterface $form_state, array &$form): array {
+function _repo_nodes_url_help_text(array $element, FormStateInterface $form_state, array &$form): array {
   /** @var \Drupal\repo_nodes\RepoNodesService $repository_service */
   $repository_service = \Drupal::service('repo_nodes.service');
   $help_text = $repository_service->getValidatorHelpText();

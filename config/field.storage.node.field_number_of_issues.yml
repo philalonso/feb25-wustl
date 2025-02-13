@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - node
+_core:
+  default_config_hash: vf-xH1J0IhzdyMs4FpKb96imf1skSaIi5Xubx9ky9z8
 id: node.field_number_of_issues
 field_name: field_number_of_issues
 entity_type: node

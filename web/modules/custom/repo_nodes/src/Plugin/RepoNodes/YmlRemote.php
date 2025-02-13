@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\repo_nodes\Plugin\RepoNodes;
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Core\Annotation\Translation;
 use Drupal\repo_nodes\RepoNodes\RepoNodesPluginBase;
 
 /**
@@ -13,7 +14,8 @@ use Drupal\repo_nodes\RepoNodes\RepoNodesPluginBase;
  * @RepoNodes(
  *   id = "yml_remote",
  *   label = @Translation("Remote .yml file"),
- *   description = @Translation("Remote .yml file that includes repository metadata.")
+ *   description = @Translation("Remote .yml file that includes repository metadata."),
+ *   url_help_text = @Translation("https://anything.anything/anything/anything.yml (or http or yaml)")
  * )
  */
 final class YmlRemote extends RepoNodesPluginBase {
@@ -29,9 +31,11 @@ final class YmlRemote extends RepoNodesPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function validateHelpText(): string {
-    return 'https://anything.anything/anything/anything.yml (or http or yaml)';
-  }
+  // Moved to RepoNodesPluginBase when changed to annotation.
+  // public function validateHelpText(): string {
+  //   // Return 'https://anything.anything/anything/anything.yml (or http or yaml)';,
+  // }
+
 
   /**
    * {@inheritdoc}

@@ -8,7 +8,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Component\Plugin\PluginManagerInterface;
 
 /**
- * Service description.
+ * Service class for RepoNodes module.
  */
 final class RepoNodesService {
   /**
@@ -25,7 +25,7 @@ final class RepoNodesService {
   ) {}
 
   /**
-   * Get help text from enabled plugins.
+   * Get repository URL help text from enabled plugins.
    *
    * @return string
    *   Concatenated help strings.
@@ -35,10 +35,12 @@ final class RepoNodesService {
     $repository_plugins = [];
     // Get the enabled list of our plugins from the Drupal config system.
     // Use the Null Coalesce Operator in case no repos are enabled.
-    $repository_plugin_ids = $this->configFactory->get('repo_nodes.settings')->get('repository_plugins') ?? [];
+    $repository_plugin_ids = $this->configFactory->get('repo_nodes.settings')
+      ->get('repository_plugins') ?? [];
     foreach ($repository_plugin_ids as $repository_plugin_id) {
       if (!empty($repository_plugin_id)) {
-        $repository_plugins[] = $this->pluginManagerRepoNodes->createInstance($repository_plugin_id);
+        $repository_plugins[] = $this->pluginManagerRepoNodes->createInstance
+        ($repository_plugin_id);
       }
     }
 

@@ -47,10 +47,12 @@ final class RepoNodesPluginManagerTest extends KernelTestBase {
     /** @var \Drupal\repo_nodes\RepoNodes\RepoNodesPluginBase $yml_remote_instance */
     $yml_remote_instance = $this->manager->createInstance('yml_remote');
     $plugin_def = $yml_remote_instance->getPluginDefinition();
-    $this->assertInstanceOf('Drupal\repo_nodes\Plugin\RepoNodes\YmlRemote', $yml_remote_instance, 'Plugin type does not match.');
+
     $this->assertInstanceOf('Drupal\repo_nodes\RepoNodes\RepoNodesPluginBase', $yml_remote_instance, 'Plugin parent class type does not match.');
-    $this->assertArrayHasKey('label', $plugin_def, 'The "Label" array key does not exist.');
-    $this->assertTrue($plugin_def['label'] == 'Remote .yml file', 'The "Label" array value does not match.');
+    $this->assertInstanceOf('Drupal\repo_nodes\Plugin\RepoNodes\YmlRemote', $yml_remote_instance, 'Plugin type does not match.');
+
+    $this->assertArrayHasKey('url_help_text', $plugin_def, 'URL help text not present in annotation.');
+    $this->assertTrue($plugin_def['url_help_text'] == 'https://anything.anything/anything/anything.yml (or http or yaml)', 'URL help text in annotation does not match.');
   }
 
 }

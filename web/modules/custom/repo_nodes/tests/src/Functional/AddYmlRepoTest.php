@@ -89,6 +89,7 @@ final class AddYmlRepoTest extends BrowserTestBase {
    *   Returns nothing.
    *
    * @test
+   * @throws \Behat\Mink\Exception\ExpectationException
    */
   public function testSettingsPage(): void {
     // Get a handle on the browsing session.
@@ -101,7 +102,7 @@ final class AddYmlRepoTest extends BrowserTestBase {
     $session->statusCodeEquals(200);
 
     // Set the value of form elements to be submitted.
-    $edit = ['edit-repo-plugins-yml-remote' => 'yml_remote'];
+    $edit = ['edit-repository-plugins-yml-remote' => 'yml_remote'];
 
     // Submit the form.
     $this->submitForm($edit, 'Save configuration');
@@ -110,8 +111,8 @@ final class AddYmlRepoTest extends BrowserTestBase {
     // Ensure the confirmation message appears.
     $session->responseContains('The configuration options have been saved.');
 
-    $session->checkboxChecked('edit-repo-plugins-yml-remote');
-    $session->checkboxNotChecked('edit-repo-plugins-github');
+    $session->checkboxChecked('edit-repository-plugins-yml-remote');
+    $session->checkboxNotChecked('edit-repository-plugins-github');
   }
 
   /**
@@ -123,7 +124,6 @@ final class AddYmlRepoTest extends BrowserTestBase {
    * @test
    *
    * @throws \Behat\Mink\Exception\ExpectationException
-   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function testUnprivilegedSettingsPage(): void {
     $session = $this->assertSession();
@@ -134,16 +134,15 @@ final class AddYmlRepoTest extends BrowserTestBase {
     $session->statusCodeEquals(403);
   }
 
-
-
-/**
- * Test that a yml repo can be added to a user profile.
- *
- * This tests that a yml-based repo can be added to a user's profile and that
- * a repository node is successfully created upon saving the profile.
- *
- * @test
- */
+  /**
+   * Test that a yml repo can be added to a user profile.
+   *
+   * This tests that a yml-based repo can be added to a user's profile and that
+   * a repository node is successfully created upon saving the profile.
+   *
+   * @test
+   * @throws \Behat\Mink\Exception\ExpectationException
+   */
 public function testAddYmlRepo(): void {
   $this->drupalLogin($this->authenticatedUser);
 
