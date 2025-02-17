@@ -1,0 +1,9 @@
+hello_wustl.hello_controller_hello:
+  path: '/hello-wustl/{name}'
+  defaults:
+    name: 'WUStL'
+    _title: 'Hello, WUStL!'
+    _controller: '\Drupal\hello_wustl\Controller\HelloWustlController'
+  requirements:
+    _permission: 'access content'
+    name: '[a-zA-Z]+'

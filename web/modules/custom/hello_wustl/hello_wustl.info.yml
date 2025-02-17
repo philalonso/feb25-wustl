@@ -1,0 +1,5 @@
+name: 'Hello, WUStL!'
+type: module
+description: 'Basic module to practice saying hello to Washington University at St Louis.'
+package: WUSTL
+core_version_requirement: ^10 || ^11
